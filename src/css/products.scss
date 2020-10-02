@@ -1,0 +1,80 @@
+@import 'colors';
+#output{
+
+  width: 70%;
+  margin: 0 auto;
+}
+
+.product1{
+  grid-area: row1col1;
+}
+.product2{
+  grid-area: row1col2;
+}
+.product3{
+  grid-area: row1col3;
+}
+.product4{
+  grid-area: row2col1;
+}
+.product5{
+  grid-area: row2col2;
+}
+.product6{
+  grid-area: row2col3;
+}
+.product7{
+  grid-area: row3col1;
+}
+.product8{
+  grid-area: row3col2;
+}
+.product9{
+  grid-area: row3col3;
+}
+
+#output ul{
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: minmax(200px,auto) minmax(200px,auto) minmax(200px,auto);
+  grid-gap: 5px;
+  grid-template-areas:
+  "row1col1 row1col2 row1col3"
+  "row2col1 row2col2 row2col3"
+  "row3col1 row3col2 row3col3"
+}
+#output ul li a{
+  text-decoration: none;
+}
+#output ul li{
+  width:100%;
+  background: $secondary;
+  border-bottom: 1px solid lightgrey;
+}
+
+#output ul li img{
+  float:left;
+  width:100px;
+  height: 120px;
+  margin-right: 10px;
+  border-radius: 10px;
+  margin-left: 10px;
+}
+#output ul li h4{
+  color: grey;
+}
+#output ul li p{
+  font-size: 16px;
+  color: grey;
+}
+
+.quantity{
+  #numberProducts{
+    width:20px;
+  }
+  span{
+    font-size: 20px;
+  }
+  margin-bottom: 40px;
+}
