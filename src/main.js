@@ -87,7 +87,7 @@ window.addEventListener('DOMContentLoaded',function(){
         <a href="#">
          <h4>${product.title}</h4>
          <img src=${img}>
-         <p>Price: ${product.price}</p>
+         <p class="price">${product.price}</p>
          <div class="quantity">
           <input type="text" id="numberProducts">
           <span id="increase">+</span>
@@ -102,8 +102,8 @@ window.addEventListener('DOMContentLoaded',function(){
     output.appendChild(ul);
     let increase = document.querySelectorAll('#increase');
     let decrease = document.querySelectorAll('#decrease');
-    // let numberProducts = document.querySelectorAll('#numberProducts');
-    let qty = 0;
+    let buttons = document.querySelectorAll('#submitId');
+    let qty = 1;
     for(let idx = 0; idx < increase.length; idx++){
       increase[idx].addEventListener('click',function(e){
         let input = e.target.previousElementSibling;
@@ -115,8 +115,16 @@ window.addEventListener('DOMContentLoaded',function(){
       decrease[idx].addEventListener('click',function(e){
         let input = e.target.previousElementSibling.previousElementSibling;
         console.log(input)
-        Number(input.value) > 0 ? input.value=`${qty--}` : input.value=`${qty=0}`
+        Number(input.value) > 1 ? input.value=`${qty--}` : input.value=`${qty=1}`
 
+      })
+    }
+    for(let idx = 0; idx < buttons.length; idx++){
+      buttons[idx].addEventListener('click',function(){
+      let quantities = document.querySelectorAll('#numberProducts');
+      let prices = document.querySelectorAll('.price');
+      let total = Number(quantities[idx].value)*Number(prices[idx].innerText);
+      
       })
     }
 });
