@@ -1,6 +1,6 @@
 import './css/main.scss';
 import img from './assets/images/item_1.jpeg';
-// import uid from 'uid';
+import uid from 'uid';
 import Product from './Product.js';
 import ListProducts from './ListProducts.js';
 const products= [
@@ -127,17 +127,59 @@ window.addEventListener('DOMContentLoaded',function(){
       let products = document.querySelectorAll('.productName');
 
       for(let index = 0; index<quantities[idx].value; index++){
-        listProducts.addProduct(new Product(products[idx].innerText,Number(prices[idx].innerText)))
+        let key = uid();
+        let product = new Product(key,products[idx].innerText,Number(prices[idx].innerText));
+        sessionStorage.setItem(key,product.print());
+        console.log(product)
+        listProducts.addProduct(product);
       }
       let shoppingCardQty = document.querySelector('.basket');
       quantities[idx].value = "1";
-      // sessionStorage.setItem(uid(),product.print());
       shoppingCardQty.innerText = listProducts.productId;
       qty = 1;
       })
     }
     document.querySelector('.basket').addEventListener('click',function(){
-      console.log("total amount: ",listProducts.total());
+      let overlay =  document.createElement('ul');
+      overlay.className = "overlayClass";
+      overlay.style.listStyle = "none";
+      overlay.style.margin = "0px auto";
+      overlay.style.display = "flex";
+      overlay.style.flexDirection = "column";
+      overlay.style.alignItems = "center";
+      overlay.style.justifyContent = "center";
+      overlay.style.zIndex = "1";
+      overlay.style.color = "white";
+      overlay.style.padding = "0px";
+      overlay.style.position = "absolute";
+      overlay.style.top = window.pageYOffset + "px";
+      overlay.style.left =  window.pageXOffset + "px";
+      overlay.style.background = 'rgba(0,0,0,0.7)';
+      overlay.style.width = window.innerWidth + "px";
+      overlay.style.height = window.innerHeight + "px";
+      for(let index = 0; index < listProducts.products.length; index++){
+        let getProduct = sessionStorage.getItem(`${listProducts.products[index].productId}`);
+        let li = document.createElement('li');
+        li.innerText = getProduct;
+        overlay.appendChild(li);
+
+      }
+      let li = document.createElement('li');
+      li.innerText = "Total amount: "+ listProducts.total();
+      overlay.appendChild(li);
+      let x = document.createElement('span');
+      x.className = "close";
+      x.innerText = "X";
+      overlay.appendChild(x);
+      document.body.appendChild(overlay);
     })
 
 });
+document.querySelector('body').addEventListener('click',function(e){
+  let ul = e.target;
+  ul.tagName==='UL' && (ul.parentNode.removeChild(ul)); 
+
+
+},false);
+
+ /*Close icon*/

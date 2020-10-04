@@ -1,11 +1,12 @@
 export default class Product{
-  constructor(name,price){
+  constructor(productId,name,price){
     this.name = name;
     this.price = Number(price);
+    this.productId = productId;
   }
 
   print(){
-    let output = "Name: "+this.name +"\nPrice: "+this.price;
+    let output = "Name: "+this.name +", Price: "+this.price;
     return output;
   }
 }
