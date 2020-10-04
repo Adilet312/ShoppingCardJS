@@ -1,7 +1,8 @@
 import './css/main.scss';
 import img from './assets/images/item_1.jpeg';
-
-
+// import uid from 'uid';
+import Product from './Product.js';
+import ListProducts from './ListProducts.js';
 const products= [
   {
     id: 1,
@@ -85,11 +86,11 @@ window.addEventListener('DOMContentLoaded',function(){
   let items = products.map( product =>`
       <li class="product${index++}">
         <a href="#">
-         <h4>${product.title}</h4>
+         <h4 class="productName">${product.title}</h4>
          <img src=${img}>
          <p class="price">${product.price}</p>
          <div class="quantity">
-          <input type="text" id="numberProducts">
+          <input type="text" id="numberProducts" value="1">
           <span id="increase">+</span>
           <span id="decrease">-</span>
          </div>
@@ -107,7 +108,6 @@ window.addEventListener('DOMContentLoaded',function(){
     for(let idx = 0; idx < increase.length; idx++){
       increase[idx].addEventListener('click',function(e){
         let input = e.target.previousElementSibling;
-        console.log(input)
         input.value=`${qty++}`
       })
     }
@@ -119,12 +119,25 @@ window.addEventListener('DOMContentLoaded',function(){
 
       })
     }
+    let listProducts = new ListProducts();
     for(let idx = 0; idx < buttons.length; idx++){
       buttons[idx].addEventListener('click',function(){
       let quantities = document.querySelectorAll('#numberProducts');
       let prices = document.querySelectorAll('.price');
-      let total = Number(quantities[idx].value)*Number(prices[idx].innerText);
-      
+      let products = document.querySelectorAll('.productName');
+
+      for(let index = 0; index<quantities[idx].value; index++){
+        listProducts.addProduct(new Product(products[idx].innerText,Number(prices[idx].innerText)))
+      }
+      let shoppingCardQty = document.querySelector('.basket');
+      quantities[idx].value = "1";
+      // sessionStorage.setItem(uid(),product.print());
+      shoppingCardQty.innerText = listProducts.productId;
+      qty = 1;
       })
     }
+    document.querySelector('.basket').addEventListener('click',function(){
+      console.log("total amount: ",listProducts.total());
+    })
+
 });
