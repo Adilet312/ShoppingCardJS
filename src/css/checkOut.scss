@@ -1,0 +1,49 @@
+@import 'colors';
+.overlayClass{
+  position:absolute;
+  background: rgba(0,0,0,0.7);
+  z-index: 1;
+}
+.output {
+  margin: 0 auto;
+  list-style: none;
+  margin-top:100px;
+  padding: 0px;
+  z-index: 2;
+  position:relative;
+  width: 30%;
+}
+.output  li{
+  width:100%;
+  background: $secondary;
+  padding: 1em;
+  margin:0px;
+  height:160px;
+  border-bottom: 1px solid lightgrey;
+  position: relative;
+}
+.output  li .checkOutImg{
+  float:left;
+  width:100px;
+  margin-right: 10px;
+  border-radius: 10px;
+}
+.output  li h4{
+  color: grey;
+  font-size: 30px;
+}
+.output li p{
+  font-size: 20px;
+  color: grey;
+}
+.output  li h1{
+  font-size: 30px;
+  text-align: center;
+}
+.output  li .removeShoppingCard{
+  position: absolute;
+  top:15px;
+  right: 20px;
+  font-size: 20px;
+  color:red;
+}

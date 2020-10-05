@@ -1,94 +1,104 @@
 import './css/main.scss';
-import img from './assets/images/item_1.jpeg';
+import iPhone1 from './assets/images/iPhone1.jpg';
+import iPhone2 from './assets/images/iPhone2.jpg';
+import iPhone3 from './assets/images/iPhone3.jpg';
+import iPhone4 from './assets/images/iPhone4.png';
+import iPhone5 from './assets/images/iPhone5.png';
+import iPhone6 from './assets/images/iPhone6.png';
+import iPhone7 from './assets/images/iPhone7.png';
+import iPhone8 from './assets/images/iPhone8.png';
+import iPhone9 from './assets/images/iPhone9.png';
 import uid from 'uid';
 import Product from './Product.js';
 import ListProducts from './ListProducts.js';
 const products= [
   {
     id: 1,
-    title: "buttermilk pancakes",
-    category: "breakfast",
-    price: 15.99,
-    img: "item_1.jpeg",
-    desc: `I'm baby woke mlkshk wolf bitters live-edge blue bottle, hammock freegan copper mug whatever cold-pressed `,
+    title: "Iphone 11",
+    category: "Cell phone",
+    price: 500.99,
+    img: iPhone1,
+    desc: `The iPhone is a smartphone made by Apple that combines a computer, iPod, digital camera and cellular phone into one device with a touchscreen interface.  `,
   },
   {
     id: 2,
-    title: "diner double",
-    category: "lunch",
-    price: 13.99,
-    img: "./assets/images/item-2.jpeg",
-    desc: `vaporware iPhone mumblecore selvage raw denim slow-carb leggings gochujang helvetica man braid jianbing. Marfa thundercats `,
+    title: "Iphone 10",
+    category: "Cell phone",
+    price: 400.99,
+    img: iPhone2,
+    desc: `The iPhone is a smartphone made by Apple that combines a computer, iPod, digital camera and cellular phone into one device with a touchscreen interface.  `,
   },
   {
     id: 3,
-    title: "godzilla milkshake",
-    category: "shakes",
-    price: 6.99,
-    img: "./assets/images/item-3.jpeg",
-    desc: `ombucha chillwave fanny pack 3 wolf moon street art photo booth before they sold out organic viral.`,
+    title: "Iphone 8",
+    category: "Cell phone",
+    price: 310,
+    img: iPhone3,
+    desc: `The iPhone is a smartphone made by Apple that combines a computer, iPod, digital camera and cellular phone into one device with a touchscreen interface. `,
   },
   {
     id: 4,
-    title: "country delight",
-    category: "breakfast",
-    price: 20.99,
-    img: "./assets/images/item-4.jpeg",
-    desc: `Shabby chic keffiyeh neutra snackwave pork belly shoreditch. Prism austin mlkshk truffaut, `,
+    title: "Iphone 7",
+    category: "Cell phone",
+    price: 230,
+    img: iPhone4,
+    desc: `The iPhone is a smartphone made by Apple that combines a computer, iPod, digital camera and cellular phone into one device with a touchscreen interface. `,
   },
   {
     id: 5,
-    title: "egg attack",
-    category: "lunch",
+    title: "Sumsung 10",
+    category: "Cell phone",
     price: 22.99,
-    img: "./assets/images/item-5.jpeg",
-    desc: `franzen vegan pabst bicycle rights kickstarter pinterest meditation farm-to-table 90's pop-up `,
+    img: iPhone5,
+    desc: `The Samsung is a smartphone made by Apple that combines a computer, iPod, digital camera and cellular phone into one device with a touchscreen interface. `,
   },
   {
     id: 6,
-    title: "oreo dream",
-    category: "shakes",
-    price: 18.99,
-    img: "./assets/images/item-6.jpeg",
-    desc: `Portland chicharrones ethical edison bulb, palo santo craft beer chia heirloom iPhone everyday`,
+    title: "Samsung 6",
+    category: "Cell phone",
+    price: 600.10,
+    img: iPhone6,
+    desc: `The Samsung is a smartphone made by Apple that combines a computer, iPod, digital camera and cellular phone into one device with a touchscreen interface. `,
   },
   {
     id: 7,
-    title: "bacon overflow",
-    category: "breakfast",
-    price: 8.99,
-    img: "./assets/images/item-7.jpeg",
-    desc: `carry jianbing normcore freegan. Viral single-origin coffee live-edge, pork belly cloud bread iceland put a bird `,
+    title: "Sumsung 4",
+    category: "Cell phone",
+    price: 200.99,
+    img: iPhone7,
+    desc: `The Samsung 2 is a smartphone made by Apple that combines a computer, iPod, digital camera and cellular phone into one device with a touchscreen interface.  `,
   },
   {
     id: 8,
-    title: "american classic",
-    category: "lunch",
-    price: 12.99,
-    img: "./assets/images/item-8.jpeg",
-    desc: `on it tumblr kickstarter thundercats migas everyday carry squid palo santo leggings. Food truck truffaut  `,
+    title: "Google Phone",
+    category: "Cell phone",
+    price: 900,
+    img:iPhone8,
+    desc: `The Google phone is a smartphone made by Apple that combines a computer, iPod, digital camera and cellular phone into one device with a touchscreen interface.  `,
   },
   {
     id: 9,
-    title: "quarantine buddy",
-    category: "shakes",
-    price: 16.99,
-    img: "./assets/images/item-9.jpeg",
-    desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
+    title: "Google Phone 7",
+    category: "Cell phone",
+    price: 1200,
+    img: iPhone9,
+    desc: `The Google Phone 7 is a smartphone made by Apple that combines a computer, iPod, digital camera and cellular phone into one device with a touchscreen interface. `,
   },
 
 ];
 
 window.addEventListener('DOMContentLoaded',function(){
+  /*Filling data*/
   let output = document.querySelector('#output');
   let ul = document.createElement('ul');
   let index = 0;
-  let items = products.map( product =>`
+  let img ;
+  let items = products.map( (product,idx) =>`
       <li class="product${index++}">
         <a href="#">
          <h4 class="productName">${product.title}</h4>
-         <img src=${img}>
-         <p class="price">${product.price}</p>
+         <img src="${product.img}">
+         <p class="price">${product.price}$</p>
          <div class="quantity">
           <input type="text" id="numberProducts" value="1">
           <span id="increase">+</span>
@@ -101,6 +111,8 @@ window.addEventListener('DOMContentLoaded',function(){
 
     ul.innerHTML = items;
     output.appendChild(ul);
+
+    /*Increasing and decreasing qty products and displaying qutities.*/
     let increase = document.querySelectorAll('#increase');
     let decrease = document.querySelectorAll('#decrease');
     let buttons = document.querySelectorAll('#submitId');
@@ -119,18 +131,19 @@ window.addEventListener('DOMContentLoaded',function(){
 
       })
     }
+    /*Adding product to SHopping cart*/
     let listProducts = new ListProducts();
     for(let idx = 0; idx < buttons.length; idx++){
       buttons[idx].addEventListener('click',function(){
       let quantities = document.querySelectorAll('#numberProducts');
       let prices = document.querySelectorAll('.price');
       let products = document.querySelectorAll('.productName');
-
+      let images = document.querySelectorAll('img');
       for(let index = 0; index<quantities[idx].value; index++){
         let key = uid();
-        let product = new Product(key,products[idx].innerText,Number(prices[idx].innerText));
-        sessionStorage.setItem(key,product.print());
-        console.log(product)
+        let product = new Product(key,images[idx].src,products[idx].innerText,prices[idx].innerText.substring(0,prices[idx].innerText.length - 1));
+        sessionStorage.setItem(key,JSON.stringify(product.print()));
+        console.log(product);
         listProducts.addProduct(product);
       }
       let shoppingCardQty = document.querySelector('.basket');
@@ -139,45 +152,51 @@ window.addEventListener('DOMContentLoaded',function(){
       qty = 1;
       })
     }
+    /*Showing Shopping Cart*/
     document.querySelector('.basket').addEventListener('click',function(){
-      let overlay =  document.createElement('ul');
+      let overlay =  document.createElement('div');
       overlay.className = "overlayClass";
-      overlay.style.listStyle = "none";
-      overlay.style.margin = "0px auto";
-      overlay.style.display = "flex";
-      overlay.style.flexDirection = "column";
-      overlay.style.alignItems = "center";
-      overlay.style.justifyContent = "center";
-      overlay.style.zIndex = "1";
-      overlay.style.color = "white";
-      overlay.style.padding = "0px";
-      overlay.style.position = "absolute";
       overlay.style.top = window.pageYOffset + "px";
       overlay.style.left =  window.pageXOffset + "px";
-      overlay.style.background = 'rgba(0,0,0,0.7)';
       overlay.style.width = window.innerWidth + "px";
-      overlay.style.height = window.innerHeight + "px";
+      // overlay.style.height = window.innerHeight + "px";
+      overlay.style.height = 1000 + "px";
+      let summary = document.createElement('ul');
+     summary.className = "output";
       for(let index = 0; index < listProducts.products.length; index++){
-        let getProduct = sessionStorage.getItem(`${listProducts.products[index].productId}`);
+        let getProduct = JSON.parse(sessionStorage.getItem(`${listProducts.products[index].productId}`));
         let li = document.createElement('li');
-        li.innerText = getProduct;
-        overlay.appendChild(li);
+        let img = document.createElement('img');
+        let h4 = document.createElement('h4');
+        let p = document.createElement('p');
+        img.className = "checkOutImg";
+        img.src = getProduct.img;
+        h4.innerText = getProduct.name;
+        p.innerText = getProduct.price+"$";
+        let remove = document.createElement('span');
+        remove.className = "removeShoppingCard";
+        remove.innerText = "X";
+        li.appendChild(remove);
+        li.appendChild(img);
+        li.appendChild(h4);
+        li.appendChild(p);
+        summary.appendChild(li);
 
       }
       let li = document.createElement('li');
-      li.innerText = "Total amount: "+ listProducts.total();
-      overlay.appendChild(li);
-      let x = document.createElement('span');
-      x.className = "close";
-      x.innerText = "X";
-      overlay.appendChild(x);
+      let h1 = document.createElement('h1');
+      h1.innerText = "Total amount: "+ listProducts.total()+"$";
+      li.appendChild(h1);
+      summary.appendChild(li);
+      overlay.appendChild(summary);
       document.body.appendChild(overlay);
     })
 
 });
 document.querySelector('body').addEventListener('click',function(e){
-  let ul = e.target;
-  ul.tagName==='UL' && (ul.parentNode.removeChild(ul)); 
+  let div = e.target;
+  console.log(div)
+  div.className==='overlayClass' && (div.parentNode.removeChild(div));
 
 
 },false);
