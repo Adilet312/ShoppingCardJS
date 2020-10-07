@@ -92,8 +92,7 @@ window.addEventListener('DOMContentLoaded',function(){
   let output = document.querySelector('#output');
   let ul = document.createElement('ul');
   let index = 0;
-  let img ;
-  let items = products.map( (product,idx) =>`
+  let items = products.map( (product) =>`
       <li class="product${index++}">
         <a href="#">
          <h4 class="productName">${product.title}</h4>
@@ -166,6 +165,7 @@ window.addEventListener('DOMContentLoaded',function(){
       for(let index = 0; index < listProducts.products.length; index++){
         let getProduct = JSON.parse(sessionStorage.getItem(`${listProducts.products[index].productId}`));
         let li = document.createElement('li');
+        li.className = 'shoppingProducts';
         let img = document.createElement('img');
         let h4 = document.createElement('h4');
         let p = document.createElement('p');
@@ -192,13 +192,10 @@ window.addEventListener('DOMContentLoaded',function(){
       document.body.appendChild(overlay);
     })
 
+
 });
-document.querySelector('body').addEventListener('click',function(e){
-  let div = e.target;
-  console.log(div)
-  div.className==='overlayClass' && (div.parentNode.removeChild(div));
 
-
-},false);
-
- /*Close icon*/
+  document.querySelector('body').addEventListener('click',function(e){
+    let div = e.target;
+    div.className==='overlayClass' && (div.parentNode.removeChild(div));
+  });

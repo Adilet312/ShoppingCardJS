@@ -1,12 +1,12 @@
-# _AutocompleteSearchAndStoreInLocalStorage_
+# _StoringDataInSessionStoarge_
 
 #### _Version 1_
-#### _Date 10/30/2020_
+#### _Date 10/07/2020_
 #### By _**Adilet Momunaliev**_
 
 ## Description
 
-_AutocompleteSearch and Store chosen movie in local storage.In addition, number of chosen movies are shown as a shopping card._
+_StoringDataInSessionStoarge is design to show list of products and add product with properties and total amount in shopping card and sessionStorage._
 
 ## Getting Started
 
@@ -19,10 +19,10 @@ These instructions will get you a copy of the project up and running on your loc
 * npm install
 * npm run start
 ### Specifications
- ![min-width:620px](searchAndStore.png);
+ ![min-width:620px](shoppingCard.png);
 ## Technologies Used
 
-_HTML, CSS, JavaScript, DOM Elements and Methods,Async functions,Local Storage, IDE Atom_
+_HTML, CSS, JavaScript, DOM Elements and Methods,session Storage , IDE Atom_
 
 ### License
 

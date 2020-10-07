@@ -9,8 +9,6 @@ export default class Product{
   }
 
   print(){
-    // let output = "Name: "+this.name +", Price: "+this.price;
-    // return output;
     return {img:this.image,name:this.name,price:this.price}
   }
 

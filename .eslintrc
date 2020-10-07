@@ -13,8 +13,10 @@
     },
     "rules": {
         "semi": 0,
-        "indent": ["warn", 2],
+        "indent": "off",
             "no-console": "off",
             "no-debugger": "warn"
     }
 }
+
+# ["warn", 2]
